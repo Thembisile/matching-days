@@ -1,58 +1,68 @@
 function MatchingDaysFactory(){
-  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
-  var dayOne = '';
-  var dayTwo = '';
+  var allDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+  var day1 = '';
+  var day2 = '';
 
-  function returnDayOne(dateOne){
-    dayOne = new Date(dateOne)
-    dayOne = days[dayOne.getDay()];
-    return dayOne;
-  }
-
-  function returnDayTwo(dateTwo){
-    dayTwo = new Date(dateTwo);
-    dayTwo = days[dayTwo.getDay()];
-    return dayTwo;
-  }
-
-  function equalDays(dayOne, dayTwo){
-    if (dayOne !== undefined && dayTwo !== undefined) {
-      return dayOne === dayTwo;
+  function returnDayOne(date){
+    if (date !== undefined) {
+      let day = new Date(date);
+      day1 = allDays[day.getDay()];
     }
+    return day1;
   }
 
-  function daysComparison(firstDate, secondDate){
-    var daysMap = {};
+  function returnDayTwo(date){
+    if (date !== undefined) {
+      let day = new Date(date);
+      day2 = allDays[day.getDay()];
+    }
+    return day2;
+  }
 
-    for (var i = 0; i < days.length; i++) {
-      var daysIndex = days[i]
+  function dayOne(){
+    return day1;
+  }
 
-      daysMap[daysIndex] = {
-        valueOfDay: daysIndex,
-        valueName: daysIndex
+  function dayTwo(){
+    return day2;
+  }
+
+  function sameDay(){
+    return day1 === day2;
+  }
+
+  function updateStyle(){
+    let weekObject = {};
+
+    for (var i = 0; i < allDays.length; i++) {
+      let currentWeekDay = allDays[i];
+      weekObject[currentWeekDay] = { dayValue : currentWeekDay}
+
+      if (day1 !== undefined && currentWeekDay === day1) {
+        weekObject[currentWeekDay] = Object.assign({ day1Class : 'first-date-color'}, weekObject[currentWeekDay]);
+        if (sameDay()) {
+          delete weekObject[currentWeekDay].day1Class;
+          weekObject[currentWeekDay] = Object.assign({ sameClass : "same-day-color"}, weekObject[currentWeekDay]);
+        }
       }
-
-      if (daysIndex === dayOne) {
-
-        daysMap[daysIndex] = Object.assign({
-          'dayOne': 'orange'
-        }, daysMap[daysIndex]);
-      }
-
-      if (daysIndex === dayTwo) {
-        daysMap[daysIndex] = Object.assign({
-          'dayTwo': 'yellow'
-          }, daysMap[daysIndex]);
+      else if (day2 !== undefined && currentWeekDay === day2) {
+        weekObject[currentWeekDay] = Object.assign({ day2Class : "second-day-color"}, weekObject[currentWeekDay]);
+        if (sameDay()) {
+          delete weekObject[currentWeekDay].day2Class;
+          weekObject[currentWeekDay] = Object.assign({ sameClass : "same-day-color"}, weekObject[currentWeekDay]);
+        }
       }
     }
-    return daysMap;
+    return weekObject;
   }
 
   return {
+    dayOne,
+    dayTwo,
     returnDayOne,
     returnDayTwo,
-    equalDays,
-    daysComparison,
-    days
+    sameDay,
+    updateStyle,
+    allDays
   }
 }

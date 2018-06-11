@@ -11,25 +11,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 
   <script type="text/x-template" class="matchingTemplate">
-    {{#each days}}
-    <span class="box {{dayOne}}{{dayTwo}} {{equalDays}}"
-    value='{{@key}}'>{{valueName}}</span >
+    {{#each weekdays}}
+    <span class="weekday {{day1Class}} {{day2Class}} {{sameClass}}" id="{{@key}}">{{dayValue}}</span>
     {{/each}}
   </script>
 </head>
 
 <body>
   <div class="container">
+
       <br>
+
       <div class="row">
         <div class="twelve columns">
-          <div class="days">
+          <div class="weekDisplayBar">
 
           </div>
         </div>
       </div>
+
       <br>
       <br>
+
       <div class="row">
         <div class="twelve columns">
           <div class="inputDisplay">
