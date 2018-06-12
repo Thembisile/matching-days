@@ -47,6 +47,112 @@ describe('Update Style Functioning', function(){
   it('should update style of first date inputs with properties of day1 class', function(){
     var Constructor = MatchingDaysFactory();
 
-    assert.deepEqual(Constructor.updateStyle());
+    Constructor.returnDayOne('15-Jun-2018')
+
+    assert.deepEqual(
+      Constructor.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday'},
+        Friday : { dayValue : 'Friday', day1Class : 'first-day-color'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
+  })
+  it('should update style of second date inputs with properties of day2 class.', function(){
+    var Constructor = MatchingDaysFactory();
+
+    Constructor.returnDayTwo('14-Jun-2018');
+
+    assert.deepEqual(
+      Constructor.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday', day2Class : 'second-day-color'},
+        Friday : { dayValue : 'Friday'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
+  })
+  it('should update the style of same day class if both inputs fall on the same weekday/day', function(){
+    var Constructor = MatchingDaysFactory();
+
+    Constructor.returnDayOne('05-Jun-2018');
+    Constructor.returnDayTwo('05-Jun-2018');
+
+    assert.deepEqual(
+      Constructor.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday', sameClass : 'same-day-color'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday'},
+        Friday : { dayValue : 'Friday'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
+
+    var Constructor2 = MatchingDaysFactory();
+
+    Constructor2.returnDayOne('05-Jun-2018');
+    Constructor2.returnDayTwo('26-Jun-2018');
+
+    assert.deepEqual(
+      Constructor2.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday', sameClass : 'same-day-color'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday'},
+        Friday : { dayValue : 'Friday'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
+  })
+  it('should update style on both days with both class properties 1 & 2 for both inputs selected', function(){
+    var Constructor = MatchingDaysFactory();
+
+    Constructor.returnDayOne('23-Jan-2018');
+    Constructor.returnDayTwo('18-Feb-2018');
+
+    assert.deepEqual(
+      Constructor.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday', day2Class : 'second-day-color'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday', day1Class : 'first-day-color'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday'},
+        Friday : { dayValue : 'Friday'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
+  })
+})
+describe('Initializing a date input', function(){
+  it('should initiliaze data of the input then store in map', function(){
+
+    var Constructor = MatchingDaysFactory('05-Jun-2018');
+
+    assert.deepEqual(
+      Constructor.updateStyle(),
+      {
+        Sunday : { dayValue : 'Sunday'},
+        Monday : { dayValue : 'Monday'},
+        Tuesday : { dayValue : 'Tuesday'},
+        Wednesday : { dayValue : 'Wednesday'},
+        Thursday : { dayValue : 'Thursday'},
+        Friday : { dayValue : 'Friday'},
+        Saturday : { dayValue : 'Saturday'}
+      }
+    )
   })
 })

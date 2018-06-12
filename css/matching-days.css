@@ -1,11 +1,19 @@
+.container {
+  border : 1px solid black
+}
 span {
   border: 1px solid black;
-  padding: 1.5%;
   border-radius: 10px;
+  padding: 15px;
   background-color: beige;
+  list-style: none;
+  display: inline-block;
+  width : 80px;
+  height: 10px;
+  text-align: center;
 }
 
-.first-date-color {
+.first-day-color {
   background: orange;
 }
 
@@ -15,4 +23,21 @@ span {
 
 .same-day-color {
   background: green;
+}
+
+.dateOne {
+  background: DeepSkyBlue;
+  font-weight: bold;
+}
+
+.dateTwo {
+  background: DeepSkyBlue;
+  font-weight: bold;
+}
+
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
 }

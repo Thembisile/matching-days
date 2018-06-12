@@ -39,7 +39,7 @@ function MatchingDaysFactory(){
       weekObject[currentWeekDay] = { dayValue : currentWeekDay}
 
       if (day1 !== undefined && currentWeekDay === day1) {
-        weekObject[currentWeekDay] = Object.assign({ day1Class : 'first-date-color'}, weekObject[currentWeekDay]);
+        weekObject[currentWeekDay] = Object.assign({ day1Class : 'first-day-color'}, weekObject[currentWeekDay]);
         if (sameDay()) {
           delete weekObject[currentWeekDay].day1Class;
           weekObject[currentWeekDay] = Object.assign({ sameClass : "same-day-color"}, weekObject[currentWeekDay]);
