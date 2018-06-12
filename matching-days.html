@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Matching Days</title>
+  <link rel="stylesheet" href="css/matching-days.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+  <script type="text/x-template" class="matchingTemplate">
+    {{#each weekdays}}
+    <span class="weekday {{day1Class}} {{day2Class}} {{sameClass}}" id="{{@key}}">{{dayValue}}</span>
+    {{/each}}
+  </script>
+</head>
+
+<body>
+  <div class="container">
+
+      <br>
+
+      <div class="row">
+        <div class="twelve columns">
+          <div class="weekDisplayBar">
+
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="row">
+        <div class="twelve columns">
+            <div class="inputDisplay">
+              <input class="dateOne" type="date" name="" value="">
+              <input class="dateTwo" type="date" name="" value="">
+            </div>
+        </div>
+      </div>
+
+  </div>
+
+</body>
+
+<script src="js/matching-days.js"></script>
+<script src="js/matching-days-dom.js"></script>
+
+</html>

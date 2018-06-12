@@ -1,11 +1,11 @@
 describe('Matching Days Inputs', function(){
-  it('should return Sunday if date selected is "08-06-2018".', function(){
+  it('should return Friday if date selected is "08-Jun-2018".', function(){
 
     var Constructor = MatchingDaysFactory();
 
     assert.equal('Friday', Constructor.returnDayOne('8-Jun-2018'));
   });
-  it('should return Monday if date selected is "05-07-2018".', function(){
+  it('should return Monday if date selected is "04-Jun-2018".', function(){
 
     var Constructor = MatchingDaysFactory();
 
@@ -154,5 +154,5 @@ describe('Initializing a date input', function(){
         Saturday : { dayValue : 'Saturday'}
       }
     )
-  })
-})
+  });
+});

@@ -3,7 +3,7 @@ function MatchingDaysFactory(){
   var day1 = '';
   var day2 = '';
 
-  function returnDayOne(date){
+  function getDay1(date){
     if (date !== undefined) {
       let day = new Date(date);
       day1 = allDays[day.getDay()];
@@ -11,7 +11,7 @@ function MatchingDaysFactory(){
     return day1;
   }
 
-  function returnDayTwo(date){
+  function getDay2(date){
     if (date !== undefined) {
       let day = new Date(date);
       day2 = allDays[day.getDay()];
@@ -59,8 +59,8 @@ function MatchingDaysFactory(){
   return {
     dayOne,
     dayTwo,
-    returnDayOne,
-    returnDayTwo,
+    getDay1,
+    getDay2,
     sameDay,
     updateStyle,
     allDays

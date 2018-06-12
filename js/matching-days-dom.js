@@ -17,14 +17,14 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 
 day1Elem.addEventListener('change', function(){
-  Constructor.returnDayOne(day1Elem.value);
+  Constructor.getDay1(day1Elem.value);
   displayElement.innerHTML = compileMatchingTemplate({
     weekdays: Constructor.updateStyle()
   });
 });
 
 day2Elem.addEventListener('change', function(){
-  Constructor.returnDayTwo(day2Elem.value);
+  Constructor.getDay2(day2Elem.value);
   displayElement.innerHTML = compileMatchingTemplate({
     weekdays: Constructor.updateStyle()
   });
