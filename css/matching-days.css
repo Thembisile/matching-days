@@ -1,6 +1,19 @@
 .container {
   background-color: beige;
 }
+
+h2 {
+  text-align: center;
+}
+
+.weekDisplayBar {
+  text-align: center;
+}
+
+.inputDisplay {
+  padding-left: 325px;
+}
+
 span {
   border: 1px solid black;
   border-radius: 10px;
